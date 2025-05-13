@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/products")
 public class TestproductController {
         private Productservice productService;
-        public TestproductController(@Qualifier("fakeStoreProductService") Productservice productService) {
+        public TestproductController(@Qualifier("DBproductService") Productservice productService) {
                 this.productService = productService;
         }
 
@@ -47,9 +47,9 @@ public class TestproductController {
                 return "Here is your product";
         }
 
-        @DeleteMapping("/{id}")
-        public void deleteProductById(@PathVariable("id") Long id) {
-        }
+//        @DeleteMapping("/{id}")
+//        public void deleteProductById(@PathVariable("id") Long id) {
+//        }
         @PatchMapping("/{id}")
         public PatchproductResponseDto UpdateProduct(@PathVariable("id") Long id,@RequestBody CreateProductDto productDto){
                 Product product = productService.PatchUpdateProduct(id,productDto.toProduct());
@@ -59,9 +59,9 @@ public class TestproductController {
 
                 return response;
         }
-        @RequestMapping(name = "AIZAZ", value = "")
-        public String asdfhbib() {
-                return "magic";
-        }
+//        @RequestMapping(name = "AIZAZ", value = "")
+//        public String asdfhbib() {
+//                return "magic";
+//        }
 
 }
