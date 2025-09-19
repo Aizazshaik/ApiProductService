@@ -1,8 +1,8 @@
 package com.example.apiproductservice.Services;
 
-import com.example.apiproductservice.dtos.FakestoreCreateProductRequestDto;
-import com.example.apiproductservice.dtos.FakestoreCreateProductResponseDto;
-import com.example.apiproductservice.dtos.FakestoreGetProductResponseDto;
+import com.example.apiproductservice.dtos.Fakestore.FakestoreCreateProductRequestDto;
+import com.example.apiproductservice.dtos.Fakestore.FakestoreCreateProductResponseDto;
+import com.example.apiproductservice.dtos.Fakestore.FakestoreGetProductResponseDto;
 import com.example.apiproductservice.models.Category;
 import com.example.apiproductservice.models.Product;
 import org.springframework.http.HttpEntity;
@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.http.HttpRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;

@@ -1,5 +1,6 @@
 package com.example.apiproductservice.dtos;
 
+import com.example.apiproductservice.dtos.Products.GetProductDto;
 import lombok.Getter;
 import lombok.Setter;
 

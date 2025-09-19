@@ -1,9 +1,6 @@
 package com.example.apiproductservice.models;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,10 +10,15 @@ import java.util.List;
 @Setter
 @Entity
 public class Category extends BaseModel {
+    @Column(nullable = false, unique = true)
     private String name;
     private String description;
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "category", cascade = CascadeType.PERSIST)
     private List<Product> FeaturedProducts;
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Product> allProducts;
+
+ 
+    @OneToOne
+    private Subcategory subcategories;
 }

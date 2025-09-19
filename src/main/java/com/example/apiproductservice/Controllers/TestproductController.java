@@ -2,6 +2,8 @@ package com.example.apiproductservice.Controllers;
 
 import com.example.apiproductservice.Services.Productservice;
 import com.example.apiproductservice.dtos.*;
+import com.example.apiproductservice.dtos.Fakestore.GetSingleProductResponseDto;
+import com.example.apiproductservice.dtos.Products.*;
 import com.example.apiproductservice.models.Product;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
@@ -40,9 +42,9 @@ public class TestproductController {
 
         @GetMapping("/{id}")
         public String getProductById(@PathVariable("id") Long id) {
-//                Product product=productService.getSingleProduct(id);
-//                GetProductResponseDto getProductResponseDto = new GetProductResponseDto();
-//                getProductResponseDto.setProduct(GetProductDto.fromProduct(product));
+                Product product=productService.getSingleProduct(id);
+                GetSingleProductResponseDto getProductResponseDto = new GetSingleProductResponseDto();
+                getProductResponseDto.setProduct(GetProductDto.fromProduct(product));
 
                 return "Here is your product";
         }

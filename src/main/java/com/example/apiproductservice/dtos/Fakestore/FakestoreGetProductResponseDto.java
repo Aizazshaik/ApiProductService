@@ -1,11 +1,13 @@
-package com.example.apiproductservice.dtos;
+package com.example.apiproductservice.dtos.Fakestore;
 
+import com.example.apiproductservice.models.Category;
+import com.example.apiproductservice.models.Product;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class FakestoreCreateProductResponseDto {
+public class FakestoreGetProductResponseDto {
     private Long id;
     private String title;
     private double price;
@@ -14,7 +16,7 @@ public class FakestoreCreateProductResponseDto {
     private String category;
 
 //    public void setId(Long id) {
-//            this.id = id;
+//        this.id = id;
 //    }
 //    public Long getId() {
 //        return id;
@@ -50,4 +52,17 @@ public class FakestoreCreateProductResponseDto {
 //        return category;
 //    }
 
+    public Product toProduct()
+    {
+        Product product = new Product();
+        product.setId(id);
+        product.setTitle(this.title);
+        product.setDescription(this.description);
+        product.setPrice(this.price);
+        product.setImageURL(this.image);
+        Category category1 = new Category();
+        category1.setName(category);
+        product.setCategory(category1);
+        return product;
+    }
 }

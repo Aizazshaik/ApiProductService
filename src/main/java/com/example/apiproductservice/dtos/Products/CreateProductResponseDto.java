@@ -1,38 +1,38 @@
-package com.example.apiproductservice.dtos;
+package com.example.apiproductservice.dtos.Products;
 
-import com.example.apiproductservice.models.Category;
 import com.example.apiproductservice.models.Product;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @Getter
 @Setter
-public class GetProductDto {
+public class CreateProductResponseDto {
     private Long id;
     private String title;
     private String description;
     private double price;
     private String imageURL;
-    private String categoryName;
-
-    public static GetProductDto fromProduct(Product product) {
-        GetProductDto getProductdto = new GetProductDto();
-        getProductdto.setId(product.getId());
-        getProductdto.setTitle(product.getTitle());
-        getProductdto.setDescription(product.getDescription());
-        getProductdto.setPrice(product.getPrice());
-        getProductdto.setImageURL(product.getImageURL());
-        getProductdto.setCategoryName(product.getCategory().getName());
-
-        return getProductdto;
-    }
-
-//    public Long getId() {
-//        return id;
-//    }
+    private String category;
+//
 //    public void setId(Long id) {
 //        this.id = id;
 //    }
+//    public Long getId() {
+//        return id;
+//    }
+
+    public static CreateProductResponseDto fromProduct(Product product) {
+        CreateProductResponseDto createProductResponseDto = new CreateProductResponseDto();
+        createProductResponseDto.setId(product.getId());
+        createProductResponseDto.setTitle(product.getTitle());
+        createProductResponseDto.setDescription(product.getDescription());
+        createProductResponseDto.setPrice(product.getPrice());
+        createProductResponseDto.setImageURL(product.getImageURL());
+        createProductResponseDto.setCategory(product.getCategory().getName());
+        return createProductResponseDto;
+    }
+
 //    public String getTitle() {
 //        return title;
 //    }
@@ -50,6 +50,7 @@ public class GetProductDto {
 //    }
 //    public void setPrice(double price) {
 //        this.price = price;
+//
 //    }
 //    public String getImageURL() {
 //        return imageURL;
@@ -60,7 +61,8 @@ public class GetProductDto {
 //    public Category getCategory() {
 //        return category;
 //    }
-//    public void setCategoryName(Category category) {
+//    public void setCategory(Category category) {
 //        this.category = category;
 //    }
+
 }

@@ -25,23 +25,29 @@ public class ProductserviceDBImpl implements Productservice{
     @Override
     public Product createProduct( Product product) {
 
-        String categoryName = product.getCategory().getName();
-         Optional<Category> category=categoryRepository.findByName(categoryName);
-        Category categoryToputinProduct =null;
-         if(category.isEmpty())
-         {
-             Category toSaveCategory=new Category();
-             toSaveCategory.setName(categoryName);
-             categoryToputinProduct=categoryRepository.save(toSaveCategory);
-         }
-         else
-         {
-             categoryToputinProduct=category.get();
-         }
-         product.setCategory(categoryToputinProduct);
+        Category categoryToputinProduct = getCategoryTobeinProduct(product);
+        product.setCategory(categoryToputinProduct);
         Product savedProduct=productRepository.save(product);
         return savedProduct;
     }
+
+    private Category getCategoryTobeinProduct(Product product) {
+        String categoryName = product.getCategory().getName();
+        Optional<Category> category=categoryRepository.findByName(categoryName);
+        Category categoryToputinProduct =null;
+        if(category.isEmpty())
+        {
+            Category toSaveCategory=new Category();
+            toSaveCategory.setName(categoryName);
+            categoryToputinProduct=categoryRepository.save(toSaveCategory);
+        }
+        else
+        {
+            categoryToputinProduct=category.get();
+        }
+        return categoryToputinProduct;
+    }
+
     public List<Product> getAllProducts() {
 
         return productRepository.findAll();
@@ -74,19 +80,7 @@ public class ProductserviceDBImpl implements Productservice{
         }
         if(product.getCategory()!=null)
         {
-            String categoryName=product.getCategory().getName();
-           Optional<Category> categoryToUpdateOptional=categoryRepository.findByName(categoryName);
-
-          Category categoryToUpdate=null;
-           if(categoryToUpdateOptional.isEmpty())
-           {
-               Category toSaveCategory=new Category();
-               toSaveCategory.setName(categoryName);
-               categoryToUpdate=categoryRepository.save(toSaveCategory);
-           }
-           else {
-               categoryToUpdate=categoryToUpdateOptional.get();
-           }
+            Category categoryToUpdate = getCategoryTobeinProduct(product);
             productToUpdate.setCategory(categoryToUpdate);
         }
 
